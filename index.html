@@ -264,16 +264,11 @@
 <script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
 <script>
   
-  const backgroundcolor = [{
-    'Clear': '4633FF'
-  }, {
-    'Clouds': '#00FA9A'
-  }, '#D2691E']
   
-  const backgroundcolor = ["#4633FF", "#3355FF", "#3390FF", #33B8FF, #33ECFF #33FFCA #33FF99 #3390FF #3390FF #3390FF #3390FF];
+  const backgroundcolor = ["#4633FF", "#3355FF", "#3390FF", "#33B8FF", "#33ECFF", "#33FFCA", "#33FF58", "#90FF33", "#F9FF33", "#FF6E33", "#FF3333"];
 
   const key = '3e3525439f6ff74bf9a6186483a1e0f3';
-  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + 'Bellevue' + '&appid=' + key+'&units=metric')
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + 'chicago' + '&appid=' + key+'&units=metric')
     .then(function(resp) {
       return resp.json()
     }) // Convert data to json
@@ -336,7 +331,7 @@ sh.style.rotate = '0deg'
 function timeTick () {
   setTimeout(timeTick,1000)
   const d = new Date()
-  const s = nn.map(d.getSeconds(),0,59,0-210,360+210)
+  const s = nn.map(d.getSeconds(),0,59,0,360)
   sh.style.rotate = s +'deg'
 }
   
@@ -345,10 +340,10 @@ mh.style.transformOrigin = '238px 238px'
   mh.style.rotate = '0eg'
   
 function timeTick2 () {
-  setTimeout(timeTick2,200)
+  setTimeout(timeTick2,1000)
   const d2 = new Date()
-  const s2 = nn.map(d2.getSeconds(),0,59,0,360)
-  mh.style.rotate = s2-50 +'deg'
+  const s2 = nn.map(d2.getMinutes(),0,59,0,360)
+  mh.style.rotate = s2 +'deg'
 }  
   
 const hh = document.querySelector('#hourhand')
@@ -358,7 +353,7 @@ hh.style.transformOrigin = '238px 238px'
 function timeTick3 () {
   setTimeout(timeTick3,1000)
   const d3 = new Date()
-  const s3 = nn.map(d3.getSeconds(),0,23,0,360)
+  const s3 = nn.map(d3.getHours(),0,23,0,360)
   hh.style.rotate = s3 +'deg'
 }  
   
